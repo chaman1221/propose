@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="A Tum Se Hi–themed romantic website with advanced features" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Charvy | From Ishan</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Favicon (Optional) -->
+  <link
+    rel="icon"
+    href="https://cdn-icons-png.flaticon.com/512/2107/2107952.png"
+    type="image/png"
+  />
+</head>
+<body>
+  <!-- Floating hearts & flowers container -->
+  <div id="floating-decor"></div>
+
+  <!-- Toast message container (for Easter egg hearts) -->
+  <div id="toast-container"></div>
+
+  <!-- Single Audio Player (Tum Se Hi) -->
+  <audio
+    id="audio1"
+    src="tum-se-hi.mp3"
+    type="audio/mpeg"
+    autoplay
+    loop
+    controls
+    style="display:none;"
+  >
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Navigation Bar (Glass + subtle gradient) -->
+  <nav class="navbar">
+    <div class="navbar-logo" onclick="secretNote()">
+      Charvy & Ishan
+    </div>
+    <ul class="navbar-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#letter">A Promise</a></li>
+      <li><a href="#future-memories">Future Memories</a></li>
+      <li><a href="#proposal">Proposal</a></li>
+    </ul>
+    <!-- Manual Pause/Play if Autoplay is blocked or user wants to pause -->
+    <button class="play-audio-btn" id="playAudioBtn">Pause/Play Music</button>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">Tum Se Hi... It’s Always You</h1>
+      <p class="hero-subtitle">
+        From the moment my heart first felt your warmth,<br />
+        I knew I wanted to fill your life with endless care and love.
+      </p>
+      <a href="#letter" class="hero-button">See My Promise</a>
+    </div>
+  </section>
+
+  <!-- Love Letter Section (Typed) -->
+  <section id="letter" class="love-section fade-in">
+    <div class="love-box glass-panel">
+      <h2 class="section-heading">All I Want To Do For You</h2>
+      <div id="typed-text" class="typed-text"></div>
+    </div>
+  </section>
+
+  <!-- Future Memories (Vision Board) -->
+  <section id="future-memories" class="memories-section fade-in">
+    <div class="memories-overlay"></div>
+    <div class="memories-content glass-panel">
+      <h2 class="section-heading">Memories We'll Make</h2>
+      <p class="memories-subtitle">
+        A sneak peek into the adventures, laughter, and cozy moments<br />
+        we'll share in the days and years ahead.
+      </p>
+      <div class="memories-gallery">
+        <div class="parallax-img-wrap">
+          <img
+            src="paris1.jpg"
+            alt="Paris trip"
+          />
+        </div>
+        <div class="parallax-img-wrap">
+          <img
+            src="cooking.jpg"
+            alt="Cooking fun"
+          />
+        </div>
+        <div class="parallax-img-wrap">
+          <img
+            src="longwalk.jpg"
+            alt="Long Walks"
+          />
+        </div>
+        <div class="parallax-img-wrap">
+          <img
+            src="sunset.jpg"
+            alt="Sunsets Together"
+          />
+        </div>
+        <div class="parallax-img-wrap">
+          <img
+            src="roadtrip.avif"
+            alt="Road Trips"
+          />
+        </div>
+        <div class="parallax-img-wrap">
+          <img
+            src="camping.jpg"
+            alt="Camping"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Proposal Section -->
+  <section id="proposal" class="proposal-section fade-in">
+    <div class="proposal-container glass-panel">
+      <h2 class="section-heading">Will You Be Mine?</h2>
+      <p>
+        My dream is to see your face light up with genuine happiness every day.
+        I promise to protect you from all sorrows, to heal any scars you carry, 
+        and to fill our days with laughter and love. 
+      </p>
+      <p>
+        Charvy, <strong>will you let me be your safe place, your biggest cheerleader, 
+        and your forever companion?</strong>
+      </p>
+      <button
+        class="proposal-button confetti-trigger"
+        onclick="openModal()"
+      >
+        Yes, I'm Ready to Answer
+      </button>
+    </div>
+  </section>
+
+  <!-- Final Section -->
+  <section id="final-section" class="final-section fade-in">
+    <div class="final-overlay"></div>
+    <div class="final-content">
+      <h2 class="final-heading">With You, Life Begins</h2>
+      <p class="final-text">
+        Every step we take from here, every laugh we share, is a future memory 
+        waiting to happen. "Tum Se Hi," everything in my life shines brighter,
+        feels closer, and becomes more meaningful. 
+      </p>
+      <p class="final-signature">– Ishan Desai</p>
+    </div>
+  </section>
+
+  <!-- Modal for her answer -->
+  <div id="modalOverlay" class="modal-overlay" style="display: none;">
+    <div class="modal animated-modal">
+      <button class="close-modal-btn" onclick="closeModal()">×</button>
+      <h2>Type Your Response, Charvy</h2>
+      <p class="modal-instructions">I can't wait to hear what you have to say!</p>
+      <form id="charvyResponseForm">
+        <textarea
+          name="response"
+          rows="6"
+          placeholder="Write your message here..."
+          required
+        ></textarea>
+        <button type="submit" class="modal-submit-btn">Send Your Words to Ishan</button>
+      </form>
+      <div id="thankYouMessage" class="thank-you-msg" style="display: none;">
+        Thank you, Charvy! Your response has been sent.
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>Crafted with the warmest love for Charvy Sharma &copy; 2025 Ishan Desai</p>
+  </footer>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+</body>
+</html>

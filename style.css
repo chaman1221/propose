@@ -1,0 +1,489 @@
+/* =========================================================
+   1. RESET & GLOBAL BASE
+========================================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+  font-family: 'Poppins', sans-serif;
+  color: #4f4f4f;
+  background: linear-gradient(120deg, #fff0f5, #ffe2ef);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1.5s forwards ease;
+}
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Glass panel styling */
+.glass-panel {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(255, 0, 0, 0.05);
+  padding: 2rem;
+}
+
+/* =========================================================
+   2. NAVIGATION BAR
+========================================================= */
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+  z-index: 999;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.35);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.navbar-logo {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.8rem;
+  color: #d81b60;
+  font-weight: 600;
+  margin-right: auto;
+  cursor: pointer;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.navbar-links li a {
+  font-weight: 500;
+  color: #333;
+  transition: color 0.3s;
+}
+
+.navbar-links li a:hover {
+  color: #d81b60;
+}
+
+.play-audio-btn {
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  background: #d81b60;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+.play-audio-btn:hover {
+  background: #b4144f;
+}
+
+/* =========================================================
+   3. HERO SECTION
+========================================================= */
+.hero-section {
+  height: 100vh;
+  background: linear-gradient(135deg, #ffa9c6, #ffd4e5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding-top: 70px; /* offset for navbar */
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.2), transparent 70%);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  max-width: 700px;
+  padding: 1rem;
+}
+
+.hero-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  text-shadow: 0 0 8px rgba(0,0,0,0.2);
+}
+
+.hero-subtitle {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+}
+
+.hero-button {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  border-radius: 30px;
+  background: #d81b60;
+  color: #fff;
+  font-weight: 600;
+  transition: background 0.3s, transform 0.3s;
+}
+.hero-button:hover {
+  background: #b4144f;
+  transform: scale(1.05);
+}
+
+/* =========================================================
+   4. LOVE LETTER SECTION (Typed Text)
+========================================================= */
+.love-section {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+}
+
+.love-box {
+  max-width: 800px;
+  text-align: center;
+}
+
+.section-heading {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.4rem;
+  color: #d81b60;
+  margin-bottom: 2rem;
+}
+
+.typed-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #3f3f3f;
+  min-height: 150px;
+  margin-top: 1rem;
+  text-align: left;
+  font-weight: 400;
+}
+
+/* =========================================================
+   5. FUTURE MEMORIES (Vision Board)
+========================================================= */
+.memories-section {
+  min-height: 60vh;
+  position: relative;
+  padding: 4rem 1rem;
+  background: linear-gradient(135deg, #ffcdd2, #f8bbd0);
+}
+
+.memories-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.25);
+  z-index: 1;
+}
+
+.memories-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.memories-subtitle {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  color: #444;
+}
+
+.memories-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+.memories-gallery img {
+  aspect-ratio: 16 / 9;    /* or 4 / 3, 3 / 2, etc. */
+  width: 100%;  
+  object-fit: cover;  
+  border-radius: 10px;  
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Parallax on hover (subtle shift) */
+.parallax-img-wrap {
+  overflow: hidden;
+  position: relative;
+  perspective: 400px;
+}
+.parallax-img-wrap img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+}
+.parallax-img-wrap:hover img {
+  transform: scale(1.05) translateY(-2%);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* =========================================================
+   6. PROPOSAL SECTION
+========================================================= */
+.proposal-section {
+  min-height: 60vh;
+  padding: 4rem 1rem;
+  background: linear-gradient(120deg, #ffe0ec, #ffe8f3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.proposal-container {
+  max-width: 700px;
+  text-align: center;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.proposal-container .section-heading {
+  margin-bottom: 1.5rem;
+}
+
+.proposal-button {
+  display: inline-block;
+  margin-top: 2rem;
+  background: #d81b60;
+  color: #fff;
+  padding: 0.8rem 2rem;
+  border-radius: 30px;
+  transition: 0.3s;
+  font-weight: 600;
+  font-size: 1rem;
+}
+.proposal-button:hover {
+  background: #b4144f;
+  transform: scale(1.04);
+}
+
+/* =========================================================
+   7. FINAL SECTION
+========================================================= */
+.final-section {
+  position: relative;
+  min-height: 50vh;
+  background: linear-gradient(135deg, #f48fb1, #f06292);
+  padding: 5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.final-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.3);
+  z-index: 1;
+}
+
+.final-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 800px;
+}
+
+.final-heading {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+.final-text {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.final-signature {
+  font-size: 1.1rem;
+  font-style: italic;
+}
+
+/* =========================================================
+   8. MODAL (POPUP) FOR CHARVY’S ANSWER
+========================================================= */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  text-align: center;
+}
+
+.animated-modal {
+  animation: scaleIn 0.4s forwards ease;
+}
+
+@keyframes scaleIn {
+  0% {transform: scale(0.7); opacity: 0;}
+  100% {transform: scale(1); opacity: 1;}
+}
+
+.close-modal-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.7rem;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.modal-instructions {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+#charvyResponseForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#charvyResponseForm textarea {
+  resize: vertical;
+  font-family: inherit;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.modal-submit-btn {
+  background: #d81b60;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 0.8rem 2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.modal-submit-btn:hover {
+  background: #b4144f;
+}
+
+.thank-you-msg {
+  margin-top: 1rem;
+  color: #d81b60;
+  font-weight: 600;
+  display: block;
+}
+
+/* =========================================================
+   9. TOAST FOR EASTER EGG
+========================================================= */
+#toast-container {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.toast {
+  background-color: #fff;
+  color: #d81b60;
+  padding: 0.8rem 1.2rem;
+  border-radius: 25px;
+  border: 1px solid rgba(216,27,96,0.3);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  animation: fadeInUp 0.4s forwards ease;
+}
+
+@keyframes fadeInUp {
+  0% {opacity: 0; transform: translateY(30px);}
+  100% {opacity: 1; transform: translateY(0);}
+}
+
+/* =========================================================
+   10. FOOTER
+========================================================= */
+.footer {
+  text-align: center;
+  padding: 1rem;
+  background: #fff;
+  font-size: 0.9rem;
+  color: #555;
+  border-top: 1px solid #eee;
+}
+
+/* =========================================================
+   11. MEDIA QUERIES
+========================================================= */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.2rem;
+  }
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  .section-heading {
+    font-size: 2rem;
+  }
+}
