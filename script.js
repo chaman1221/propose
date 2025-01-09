@@ -1,10 +1,25 @@
 /****************************************************************************
+ * SPLASH SCREEN FOR USER GESTURE
+ ****************************************************************************/
+const splashOverlay = document.getElementById('splashOverlay');
+const enterWorldBtn = document.getElementById('enterWorldBtn');
+const audio1 = document.getElementById('audio1');
+
+// Once she clicks "Enter My World," hide splash + start audio
+enterWorldBtn.addEventListener('click', () => {
+  splashOverlay.style.display = 'none';
+  // This user gesture ensures audio can play
+  audio1.play().catch((err) => {
+    console.log("Autoplay blocked or error: ", err);
+  });
+});
+
+/****************************************************************************
  * 1. HEART-FLOWER FLOATING DECOR + EASTER EGG TOAST
  ****************************************************************************/
 const floatingDecorContainer = document.getElementById('floating-decor');
 const toastContainer = document.getElementById('toast-container');
 
-// Let's store some sweet mini messages for the Easter egg
 const sweetNotes = [
   "You're my sunshine on a cloudy day",
   "Tu hai toh I'll be alright",
@@ -97,7 +112,6 @@ function showToast() {
   toast.textContent = sweetNotes[Math.floor(Math.random() * sweetNotes.length)];
   toastContainer.appendChild(toast);
 
-  // Remove after 2.5s
   setTimeout(() => {
     toast.remove();
   }, 2500);
@@ -180,7 +194,6 @@ function createConfettiPiece() {
   }, duration * 1000);
 }
 
-// minimal confetti styling
 const confettiStyle = document.createElement('style');
 confettiStyle.innerHTML = `
   .confetti {
@@ -202,13 +215,11 @@ document.head.appendChild(confettiStyle);
 /****************************************************************************
  * 4. SINGLE AUDIO TRACK + PLAY/PAUSE BUTTON
  ****************************************************************************/
-const audio1 = document.getElementById('audio1');
 const playAudioBtn = document.getElementById('playAudioBtn');
-
 if (audio1 && playAudioBtn) {
   playAudioBtn.addEventListener('click', () => {
     if (audio1.paused) {
-      audio1.play();
+      audio1.play().catch(err => console.log(err));
     } else {
       audio1.pause();
     }
@@ -234,7 +245,6 @@ function secretNote() {
   showToastCustom("I love you more than words can say.");
 }
 
-/* Reuse the toast system but with a custom message param */
 function showToastCustom(message) {
   const toast = document.createElement('div');
   toast.classList.add('toast');
@@ -253,7 +263,8 @@ const charvyResponseForm = document.getElementById('charvyResponseForm');
 const thankYouMessage = document.getElementById('thankYouMessage');
 
 // Replace with your actual Formspree endpoint:
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xrbbrznn';
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xrbbrznn'; 
+
 charvyResponseForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   const formData = new FormData(charvyResponseForm);
